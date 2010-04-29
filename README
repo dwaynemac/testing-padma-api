@@ -1,0 +1,5 @@
+Application for testing of PADMA's API.
+
+==Usage
+
+for usage run padma-api on port 4567
