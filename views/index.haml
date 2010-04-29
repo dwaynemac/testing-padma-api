@@ -1,0 +1,39 @@
+%h1#fed_name= @federation["name"]
+
+#total_students
+  %label= t.index.current_students_total
+  %span.data= @stats["current"]["students_count"]["total"]
+
+#total_schools
+  %label= t.index.current_schools.total
+  %span.data= @stats["current"]["schools_count"]["total"]
+
+%table#students_by_level
+  %tr
+    %th{:colspan => 8}= t.index.students_by_level
+  %tr
+    -(1...9).each do |level|
+      %td= level.to_s
+  %tr
+    -(1...9).each do |level|
+      %td= @stats["current"]["students_count"]["by_level"][level.to_s]
+
+%table#enrollments
+  %tr
+    %th{:colspan => 12}= t.index.enrollments_for_year
+  %tr
+    -(1...13).each do |month|
+      %th= month
+  %tr
+    -(1...13).each do |month|
+      %td= @stats["monthly_for_year"]["enrollments"][month.to_s]
+
+%table#drop_outs
+  %tr
+    %th{:colspan => 12}= t.index.drop_outs_for_year
+  %tr
+    -(1...13).each do |month|
+      %th= month
+  %tr
+    -(1...13).each do |month|
+      %td= @stats["monthly_for_year"]["drop_outs"][month.to_s]
